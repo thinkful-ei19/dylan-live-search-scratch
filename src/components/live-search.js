@@ -12,17 +12,11 @@ class LiveSearch extends Component {
     };
   }
 
-  setSearchTerm(term) {
-    this.setState({
-      term
-    });
-  }
-
   render() {
     const filteredCharacters = this.props.characters.filter(character => character.name.toLowerCase().includes(this.state.term));
     return (
       <div>
-        <SearchForm searchTerm={term => this.setSearchTerm(term)} />
+        <SearchForm searchTerm={term => this.setState({ term })} />
         <CharacterCount characterCount={filteredCharacters.length} />
         <CharacterList characterList={filteredCharacters} />
       </div>
